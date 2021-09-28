@@ -28,3 +28,5 @@ int main(void)
 
    printf(" Difference between the two is %f\n", diff);
 }
+
+/* Compile using gcc -o Sum Sum.c */
