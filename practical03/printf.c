@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+/* compile source code using gcc -o printf printf.c */
+
 int main(void)
 {
     /* declare integer and floating point variables */
