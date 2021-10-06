@@ -2,6 +2,8 @@
 #define _USE_MATH_DEFINES
 #include <math.h>
 
+/* compile source code using gcc -lm -o curvearea curvearea.c */
+
 int main(void)
 {
     /* declare variables */
