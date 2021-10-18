@@ -2,38 +2,53 @@
 #define _USE_MATH_DEFINES
 #include <math.h>
 
-/*declaring array as global variable */
-float t[12];
-float degtorad(float arg);
+/*declare functions */
+float degtorad(float degang);
 float areacalc(int num);
 
 int main(void)
 {
     /* declare variables */
-    int i, x;
-    float degang, radang;
+    int i;
+    float deg, rad;
+    int N = 12;
+    /*declaring array for tan(x)*/
+    float T[N + 1];
 
-    /*Calculate values for tan(x) in radians in the range [0,60] */
-    for (i = 5; i < 60; i = i = 5)
+    /*Calculate values for tan(xi) in radians in the range [0,60] where i = 0, 1, ..., 12 as array elements
+    xi in radians*/
+    for (i = 0; i <= N; i++)
     {
-        degang = i;
-        radang = (degtorad(degang));
-        t[x] = tan(radang);
-        x++;
+        deg = i * 5.0;
+        rad = (degtorad(deg));
+        T[i] = tan(rad);
+        printf("T[%d] = %f (f(x) at x = %d)\n", i, T[i], i);
     }
-}
-float degtorad(float arg)
-{
-    return ((M_PI * arg) / 180.0);
+
+    /* Find area by trapezoidal rule */
+    float area;
+    area = T[0] + T[N];
+
+    for (i = 1; i < N; i++)
+    {
+        area = area + 2.0 * T[i];
+    }
+
+    /* Multiply area by (pi/3)/2N after converting to radians */
+    float mult_rad = degtorad((60.0 - 0.0) / (2.0 * N));
+    area = mult_rad * area;
+
+    /* Approximated result */
+    printf("\nApproximated area according to Trapezoidal rule: %f\n", area);
+
+    /*Actual result (ln(2)) */
+    printf("Real result: %f\n", log(2.0));
+
+    return 0;
 }
 
-float areacalc(int num)
+/*function definition */
+float degtorad(float degang)
 {
-    float area = tan(0.0) + tan(60.0);
-    printf("The initial sum of tan(0) + tan(Pi/3) is %.4f\n", area);
-    for (i = 5; i < num; i =)
-    {
-        area = area + 2 * tan((M_PI * i) / 180.0);
-        printf("New area at x%d= %f\n", i / 5, area);
-    }
+    return ((M_PI * degang) / 180.0);
 }
