@@ -1,3 +1,5 @@
+/* compile on sciprog using gcc -lm -o trapez_tan trapez_tan.c */
+
 #include <stdio.h>
 #define _USE_MATH_DEFINES
 #include <math.h>
