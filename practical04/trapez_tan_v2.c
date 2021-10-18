@@ -1,4 +1,4 @@
-/* compile on sciprog using gcc -lm -o trapez_tan trapez_tan.c */
+/* compile on sciprog using gcc -lm -o trapez_tan_v2 trapez_tan_v2.c */
 
 #include <stdio.h>
 #define _USE_MATH_DEFINES
@@ -6,6 +6,7 @@
 
 /*declare functions */
 float degtorad(float degang);
+float traprule(int N, float T[N + 1]);
 
 int main(void)
 {
@@ -28,16 +29,7 @@ int main(void)
 
     /* Find area by trapezoidal rule */
     float area;
-    area = T[0] + T[N];
-
-    for (i = 1; i < N; i++)
-    {
-        area = area + 2.0 * T[i];
-    }
-
-    /* Multiply area by (pi/3)/2N after converting to radians */
-    float mult_rad = degtorad((60.0 - 0.0) / (2.0 * N));
-    area = mult_rad * area;
+    area = traprule(N, T);
 
     /* Approximated result */
     printf("\nApproximated area according to Trapezoidal rule: %f\n", area);
@@ -48,8 +40,26 @@ int main(void)
     return 0;
 }
 
-/*function definition */
+/*function definitions */
 float degtorad(float degang)
 {
     return ((M_PI * degang) / 180.0);
+}
+
+float traprule(int N, float T[N + 1])
+{
+    int i;
+    float area;
+
+    area = T[0] + T[N];
+    for (i = 1; i < N; i++)
+    {
+        area = area + 2.0 * T[i];
+    }
+
+    /* Multiply area by (pi/3)/2N after converting to radians */
+    float mult_rad = degtorad((60.0 - 0.0) / (2.0 * N));
+    area = mult_rad * area;
+
+    return area;
 }
