@@ -13,23 +13,23 @@ int main(void)
     // request user input of n
     n = userinput();
 
-    // create array for Fibonacci series
+    // create array for Fibonacci sequence
     int Fib[n];
 
     Fib[0] = 0;
     Fib[1] = 1;
 
-    // Fibonacci series loop
-    for (i = 2; i <= n; i++)
+    // Fibonacci sequence loop
+    for (i = 2; i < n; i++)
     {
         Fib[i] = fibonacci(Fib[i - 1], Fib[i - 2]);
     }
 
-    // print fibonacci series
-    printf("The Fibonacci series F(n) up to n = %d is:\n", n);
-    for (j = 0; j <= n; j++)
+    // print fibonacci squence
+    printf("The Fibonacci sequence up to n = %d is:\n", n);
+    for (j = 0; j < n; j++)
     {
-        printf("F[%d] = %d at n = %d\n", j, Fib[j], j);
+        printf("%d, ", Fib[j]);
     }
 }
 
