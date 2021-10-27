@@ -3,6 +3,7 @@
 gcc -c main.c
 gcc -c mm.c
 then create executable through gcc -o mmc main.o mm.o */
+// Makefile (command: "make") can be used to do these steps automatically
 
 #include <stdio.h>
 
